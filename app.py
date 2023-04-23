@@ -82,7 +82,7 @@ def update_graph(artist, layout, add_neighbors):
         case 'Spiral':
             pos = nx.spiral_layout(G, resolution=len(G.nodes)/25 if add_neighbors else 0.35) 
         case 'Shell':
-            pos = nx.shell_layout(G, scale=1) 
+            pos = nx.shell_layout(G) 
         case 'Random':
             pos = nx.random_layout(G)
         case 'Kamada Kawai': # can give warning if nodes > 45ish

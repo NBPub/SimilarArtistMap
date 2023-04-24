@@ -4,17 +4,11 @@ from dash import Dash, html, dcc, callback, Output, Input
 import dash_daq as daq
 import dash_bootstrap_components as dbc # https://dash-bootstrap-components.opensource.faculty.ai/docs/
 
-
 import networkx as nx
 from random import sample
 
 from network_graph import network, net_figure
 import plotly.graph_objects as go
-
-# network(artist, add_neighbors, similar_artists)
-    # returns G, add_neighbors
-# net_figure(G, pos, artist, similar_artists, add_neighbors)
-    # returns figure
 
 
 """Load Similar Artist Data"""
@@ -34,7 +28,7 @@ art_list = list(similar_artists.keys())
 app = Dash(__name__,  title="Sim Art Map",
            external_stylesheets=[dbc.themes.DARKLY])
 
-# for Gunicorn deployment           
+# Gunicorn deployment, define server           
 # server = app.server 
 
 app.layout = html.Div([ 
@@ -88,12 +82,12 @@ def update_graph(artist, layout, add_neighbors):
             pos = nx.shell_layout(G) 
         case 'Random':
             pos = nx.random_layout(G)
-        case 'Kamada Kawai': # can give warning if nodes > 45ish
+        case 'Kamada Kawai': # could give disclaimer if nodes > 45ish
             if add_neighbors:
                 pos = nx.kamada_kawai_layout(G, pos=nx.kamada_kawai_layout(G))              
             else:
                 pos = nx.kamada_kawai_layout(G)
-        case 'Planar':
+        case 'Planar': # generated positions not always planar with neighbors
             try:
                 pos = nx.planar_layout(G)
             except:
@@ -106,4 +100,4 @@ def update_graph(artist, layout, add_neighbors):
     return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True) # set to False for deployment

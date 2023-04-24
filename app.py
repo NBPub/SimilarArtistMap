@@ -34,6 +34,9 @@ art_list = list(similar_artists.keys())
 app = Dash(__name__,  title="Sim Art Map",
            external_stylesheets=[dbc.themes.DARKLY])
 
+# for Gunicorn deployment           
+# server = app.server 
+
 app.layout = html.Div([ 
     html.Div(dcc.Link('Network Layout Reference',
              href = "https://networkx.org/documentation/stable/reference/drawing.html#module-networkx.drawing.layout"),
@@ -58,7 +61,7 @@ app.layout = html.Div([
              href="https://www.last.fm/api/show/artist.getSimilar", 
              className='fst-italic mx-5'),
     
-    html.Footer('placeholder for Source Code link', className=''),    
+    html.Footer(dcc.Link('Source Code - GPLv3', href='https://github.com/NBPub/SimilarArtistMap'))   
 ], className='mt-2 mx-5')
     
 

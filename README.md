@@ -18,7 +18,7 @@ Visualize similar artist maps for musical artists in your library.
   - hosted on [render](https://render.com/), deployed by [Gunicorn](https://docs.gunicorn.org/en/stable/index.html)
     - `--workers=2`
 	- speed may be limited by free tier hosting, can workers/threads be optimized for performance?
-  - source code for site is located here, differences for deployment:
+  - source code for site is located [on another repository](https://github.com/NBPub/SimilarArtistMap_deploy), differences for deployment:
     - define `server` in [Dash app](https://dash.plotly.com/deployment)
 	- set `Debug=False`
 	
@@ -126,7 +126,7 @@ The interactive Plotly figures were easily integrated into the demonstration sit
  
  *dependencies of the listed packages are not provided, see [requirements.txt](/requirements.txt) for full list of packages installed*
  
-  - **[Python](https://docs.python.org/3/library/index.html) - 3.10 or greater recommended *(and likely required)* **
+  - **[Python](https://docs.python.org/3/library/index.html) - 3.10 or greater recommended** ***(and likely required)***
   - [Dash](https://dash.plotly.com/)
     - [dash-daq](https://dash.plotly.com/dash-daq)
 	- [dash-bootstrap-components](https://dash-bootstrap-components.opensource.faculty.ai/docs/)
